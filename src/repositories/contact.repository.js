@@ -20,7 +20,7 @@ class ContactRepository {
 
     static async deleteContact(id) {    
         return await Contact.findByIdAndDelete(id)
-    }
-
-    
+    }   
 }
+
+export default ContactRepository

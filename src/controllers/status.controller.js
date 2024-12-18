@@ -10,7 +10,7 @@ export const getPingController = (req, res) => {
             message: 'pong'
         })
         .build()
-        res.status(200).json(response)
+        return res.json(response)
     }
     catch(error){
         const response = new ResponseBuilder()
@@ -21,6 +21,6 @@ export const getPingController = (req, res) => {
             detail: error.message
         })
         .build()
-        res.status(500).json(response)
+        return res.json(response)
     }
 }

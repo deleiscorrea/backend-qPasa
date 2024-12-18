@@ -12,6 +12,9 @@ const contactSchema = new mongoose.Schema({
     info: {
         type: String,
     },
+    image: {
+        type: String
+    },
     admin_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',

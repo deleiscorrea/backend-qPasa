@@ -52,7 +52,9 @@ export const registerUserController = async (req, res) => {
         .setOk(true)
         .setStatus(201)
         .setMessage('Usuario registrado con éxito')
-        .setPayload({})
+        .setPayload({
+            message: 'Verificá tu correo para completar el registro'
+        })
         .build()
         return res.json(response)
     }

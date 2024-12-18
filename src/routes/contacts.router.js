@@ -4,12 +4,10 @@ import { createContactController, deleteContactController, getAllContactsControl
 
 const contactRouter = express.Router()
 
-contactRouter.use(verifyApyKeyMiddleware)
-
 contactRouter.get('/', verifyTokenMiddleware(), getAllContactsController)
 contactRouter.get('/:contact_id', verifyTokenMiddleware(), getContactByIdController)
-contactRouter.post('/', verifyTokenMiddleware(['admin']), createContactController)
-contactRouter.put('/:contact_id', verifyTokenMiddleware(['admin']), updateContactController)
-contactRouter.delete('/:contact_id', verifyTokenMiddleware(['admin']), deleteContactController)
+contactRouter.post('/', verifyTokenMiddleware(['admin', 'user']), createContactController)
+contactRouter.put('/:contact_id', verifyTokenMiddleware(['admin', 'user']), updateContactController)
+contactRouter.delete('/:contact_id', verifyTokenMiddleware(['admin', 'user']), deleteContactController)
 
 export default contactRouter
