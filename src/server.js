@@ -11,7 +11,7 @@ const app = express()
 const PORT = ENVIROMENT.PORT || 3000
 
 const corsOptions = {
-    origin: ["http://localhost:5173", "https://frontend-q-pasa-d908zpg13-ignacios-projects-ff75f73a.vercel.app"],
+    origin: ["http://localhost:5173", "https://frontend-q-pasa.vercel.app"],
     methods: ['GET', 'POST', 'PUT', 'DELETE']
 }
 
