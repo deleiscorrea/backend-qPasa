@@ -10,11 +10,7 @@ import contactRouter from "./routes/contacts.router.js"
 const app = express()
 const PORT = ENVIROMENT.PORT || 3000
 
-const corsOptions = {
-    origin: [ENVIROMENT.URL_FRONT, "https://frontend-q-pasa.vercel.app"],
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
-}
-app.use(cors(corsOptions))
+app.use(cors())
 app.use(express.json({limit: '5mb'}))
 app.use(verifyApyKeyMiddleware)
 
