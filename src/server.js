@@ -12,7 +12,8 @@ const PORT = ENVIROMENT.PORT || 3000
 
 const corsOptions = {
     origin: ['http://localhost:5173', 'https://frontend-q-pasa.vercel.app'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }
 app.use(cors(corsOptions))
 app.use(express.json({limit: '5mb'}))
