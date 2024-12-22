@@ -10,6 +10,12 @@ import contactRouter from "./routes/contacts.router.js"
 const app = express()
 const PORT = ENVIROMENT.PORT || 3000
 
+
+const corsOptions = {
+    origin: [ENVIROMENT.URL_FRONT, 'http://localhost:5173'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}
 app.use(cors())
 app.use(express.json({limit: '5mb'}))
 app.use(verifyApyKeyMiddleware)
