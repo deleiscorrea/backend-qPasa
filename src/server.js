@@ -3,7 +3,6 @@ import express from "express"
 import statusRouter from "./routes/status.router.js"
 import authRouter from "./routes/auth.router.js"    
 import mongoose from "./db/config.js"
-import cors from "cors"
 import { verifyApyKeyMiddleware } from "./middlewares/auth.middlewares.js"
 import contactRouter from "./routes/contacts.router.js"
 
@@ -11,8 +10,8 @@ const app = express()
 const PORT = ENVIROMENT.PORT || 3000
 
 const corsOptions = {
-    origin: [ENVIROMENT.URL_FRONT, 'http://localhost:5173'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    origin: '*',
+    methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization', 'x-api-key']
 }
 app.use(cors(corsOptions))
