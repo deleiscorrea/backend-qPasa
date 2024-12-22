@@ -66,7 +66,6 @@ export const verifyTokenMiddleware = (allowed_roles = []) => {
 export const verifyApyKeyMiddleware = (req, res, next) => {
     try{
         const apikey_header = req.headers['x-api-key']
-        console.log("APYKEY:", apikey_header)
         if(!apikey_header){
             const response = new ResponseBuilder()
             .setOk(false)
