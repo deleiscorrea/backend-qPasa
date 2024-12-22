@@ -13,11 +13,12 @@ const PORT = ENVIROMENT.PORT || 3000
 const corsOptions = {
     origin: ['http://localhost:5173', 'https://frontend-q-pasa.vercel.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    allowedHeaders: ['Content-Type', 'Authorization', 'x-api-key']
 }
 app.use(cors(corsOptions))
 app.use(express.json({limit: '5mb'}))
 /* app.use(verifyApyKeyMiddleware) */
+app.options('*', cors(corsOptions));
 
 app.use('/api/status', statusRouter)
 app.use('/api/auth', authRouter)
