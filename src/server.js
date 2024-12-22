@@ -18,15 +18,11 @@ const corsOptions = {
 app.use(cors(corsOptions))
 app.use(express.json({limit: '5mb'}))
 /* app.use(verifyApyKeyMiddleware) */
-app.options('*', cors(corsOptions));
 
 app.use('/api/status', statusRouter)
 app.use('/api/auth', authRouter)
 app.use('/api/contacts', contactRouter)
 
-import { createServer } from "http";
-const server = createServer(app);
-
-export default (req, res) => {
-    server.emit('request', req, res);
-};
+app.listen(PORT, () => {
+    console.log(`El servidor se está escuchando en http://localhost:${PORT}`)
+})
