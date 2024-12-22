@@ -23,6 +23,9 @@ app.use('/api/status', statusRouter)
 app.use('/api/auth', authRouter)
 app.use('/api/contacts', contactRouter)
 
-app.listen(PORT, () => {
-    console.log(`El servidor se está escuchando en http://localhost:${PORT}`)
-})
+import { createServer } from "http";
+const server = createServer(app);
+
+export default (req, res) => {
+    server.emit('request', req, res);
+};
