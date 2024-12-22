@@ -59,7 +59,7 @@ export const registerUserController = async (req, res) => {
         return res.json(response)
     }
     catch(error){
-        console.error(error)
+        console.error("error al registrar usuario:", error)
         const response = new ResponseBuilder()
         .setOk(false)
         .setStatus(500)
