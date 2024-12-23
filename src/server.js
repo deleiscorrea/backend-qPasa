@@ -12,7 +12,7 @@ const PORT = ENVIROMENT.PORT || 3000
 
 const corsOptions = {
     origin: ENVIROMENT.URL_FRONT,
-    methods: ['GET', 'POST'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization', 'x-api-key']
 }
 app.use(cors(corsOptions))
