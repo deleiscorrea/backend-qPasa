@@ -3,6 +3,7 @@ import express from "express"
 import statusRouter from "./routes/status.router.js"
 import authRouter from "./routes/auth.router.js"    
 import mongoose from "./db/config.js"
+import cors from "cors"
 import { verifyApyKeyMiddleware } from "./middlewares/auth.middlewares.js"
 import contactRouter from "./routes/contacts.router.js"
 
