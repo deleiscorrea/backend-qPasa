@@ -26,7 +26,7 @@ export const registerUserController = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10)
         const verificationToken = jwt.sign({email: email}, ENVIROMENT.JWT_SECRET, {expiresIn: '1d'})
 
-        const url_verification = `http://localhost:${ENVIROMENT.PORT}/api/auth/verify/${verificationToken}`
+        const url_verification = `https://backend-q-pasa.vercel.app/api/auth/verify/${verificationToken}`
         await sendEmail({
             to: email,
             subject: 'Verificación de correo electrónico',
