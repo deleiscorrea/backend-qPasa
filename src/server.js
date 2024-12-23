@@ -14,7 +14,7 @@ const corsOptions = {
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization', 'x-api-key']
 }
-app.use(cors())
+app.use(cors(corsOptions))
 
 app.use(express.json({limit: '5mb'}))
 app.use(verifyApyKeyMiddleware)
