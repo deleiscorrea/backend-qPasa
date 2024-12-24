@@ -6,8 +6,6 @@ import mongoose from "./db/config.js"
 import cors from "cors"
 import { verifyApyKeyMiddleware } from "./middlewares/auth.middlewares.js"
 import contactRouter from "./routes/contacts.router.js"
-import { unless } from "express-unless"
-import { verifyEmailValidationController } from "./controllers/auth.controller.js"
 
 const app = express()
 const PORT = ENVIROMENT.PORT || 3000
@@ -20,18 +18,7 @@ const corsOptions = {
 app.use(cors(corsOptions))
 
 app.use(express.json({limit: '5mb'}))
-
-verifyApyKeyMiddleware.unless = unless
-
-app.use(
-    verifyApyKeyMiddleware.unless({
-        path: [
-            { url: '/api/auth/verify/:verification_token', methods: ['GET'] }
-        ]
-    })
-)
-
-app.get('/api/auth/verify/:verification_token', verifyEmailValidationController)
+app.use(verifyApyKeyMiddleware)
 
 app.use('/api/status', statusRouter)
 app.use('/api/auth', authRouter)
