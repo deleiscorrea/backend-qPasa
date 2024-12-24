@@ -18,7 +18,7 @@ const corsOptions = {
 app.use(cors(corsOptions))
 
 app.use(express.json({limit: '5mb'}))
-app.use(verifyApyKeyMiddleware)
+/* app.use(verifyApyKeyMiddleware) */
 
 app.use('/api/status', statusRouter)
 app.use('/api/auth', authRouter)
