@@ -105,15 +105,29 @@ export const verifyEmailValidationController = async (req, res) => {
         const decoded = jwt.verify(verification_token, ENVIROMENT.JWT_SECRET)
         const user = await User.findOne({email: decoded.email})
         if(!user){
-            //LOGICA DE ERROR NOT-FOUND
+            const response = new ResponseBuilder()
+                .setOk(false)
+                .setStatus(404)
+                .setMessage('Usuario no encontrado')
+                .setPayload({
+                    detail: 'No existe un usuario con el correo proporcionado'
+                })
+                .build()
+                return res.json(response)
         }
         if(user.emailVerified){
-            //LOGICA DE EMAIL YA VERIFICADO (ERROR 400)
+            const response = new ResponseBuilder()
+                .setOk(false)
+                .setStatus(400) 
+                .setMessage('El correo electrónico ya está verificado')
+                .setPayload({
+                    detail: 'Este correo ya fue validado previamente'
+                })
+                .build()
+                return res.json(response)
         }
 
         user.emailVerified = true
-        /* user.verificationToken = undefined */
-
         await user.save()
 
         const response = new ResponseBuilder()
