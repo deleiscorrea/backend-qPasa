@@ -9,7 +9,19 @@ import userRepository from "../repositories/user.repository.js"
 export const registerUserController = async (req, res) => {
     try{
         const { name, email, password } = req.body
-        //hacer validaciones
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            const response = new ResponseBuilder()
+                .setOk(false)
+                .setStatus(400)
+                .setMessage('Error al registrar usuario')
+                .setPayload({
+                    detail: 'El correo electrónico no es válido'
+                })
+                .build();
+            return res.json(response);
+        }
+
         const existentUser = await User.findOne({ email: email })
         if(existentUser){
             const response = new ResponseBuilder()            
